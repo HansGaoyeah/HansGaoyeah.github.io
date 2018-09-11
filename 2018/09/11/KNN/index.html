@@ -107,16 +107,19 @@
 
 
 
-<meta name="description" content="开心就好">
-<meta property="og:type" content="website">
-<meta property="og:title" content="高航的博客">
-<meta property="og:url" content="http://gaohangcs.com/archives/2018/09/index.html">
+<meta name="description" content="KNN 是什么/原理 核心思想：“近朱者赤，近墨者黑”，由你的邻居来推断出你的类别 python实现 算法不足之处   是什么/原理 k近邻法（KNN）是一种基本分类与回归方法，是“懒惰学习”的代表，其算法的时间复杂度是O(n)，一般适用于样本数较少的数据集。其输出可以是多类。 k近邻法没有显式的学习过程，即没有训练阶段，数据集事先已有了分类和特征值，待收到新样本后直接进行处理。 相似度衡量方法：">
+<meta property="og:type" content="article">
+<meta property="og:title" content="KNN学习笔记">
+<meta property="og:url" content="http://gaohangcs.com/2018/09/11/KNN/index.html">
 <meta property="og:site_name" content="高航的博客">
-<meta property="og:description" content="开心就好">
+<meta property="og:description" content="KNN 是什么/原理 核心思想：“近朱者赤，近墨者黑”，由你的邻居来推断出你的类别 python实现 算法不足之处   是什么/原理 k近邻法（KNN）是一种基本分类与回归方法，是“懒惰学习”的代表，其算法的时间复杂度是O(n)，一般适用于样本数较少的数据集。其输出可以是多类。 k近邻法没有显式的学习过程，即没有训练阶段，数据集事先已有了分类和特征值，待收到新样本后直接进行处理。 相似度衡量方法：">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://gss2.bdstatic.com/-fo3dSag_xI4khGkpoWK1HF6hhy/baike/w%3D268/sign=fc3731ea0ad162d985ee651a29dfa950/bf096b63f6246b60f20ccd5aebf81a4c510fa29a.jpg">
+<meta property="og:updated_time" content="2018-09-11T05:02:01.216Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="高航的博客">
-<meta name="twitter:description" content="开心就好">
+<meta name="twitter:title" content="KNN学习笔记">
+<meta name="twitter:description" content="KNN 是什么/原理 核心思想：“近朱者赤，近墨者黑”，由你的邻居来推断出你的类别 python实现 算法不足之处   是什么/原理 k近邻法（KNN）是一种基本分类与回归方法，是“懒惰学习”的代表，其算法的时间复杂度是O(n)，一般适用于样本数较少的数据集。其输出可以是多类。 k近邻法没有显式的学习过程，即没有训练阶段，数据集事先已有了分类和特征值，待收到新样本后直接进行处理。 相似度衡量方法：">
+<meta name="twitter:image" content="https://gss2.bdstatic.com/-fo3dSag_xI4khGkpoWK1HF6hhy/baike/w%3D268/sign=fc3731ea0ad162d985ee651a29dfa950/bf096b63f6246b60f20ccd5aebf81a4c510fa29a.jpg">
 
 
 
@@ -146,13 +149,13 @@
 
 
 
-  <link rel="canonical" href="http://gaohangcs.com/archives/2018/09/"/>
+  <link rel="canonical" href="http://gaohangcs.com/2018/09/11/KNN/"/>
 
 
 
 
 
-  <title>归档 | 高航的博客</title>
+  <title>KNN学习笔记 | 高航的博客</title>
   
 
 
@@ -171,7 +174,7 @@
     
   
 
-  <div class="container sidebar-position-left page-archive">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -369,111 +372,186 @@
           <div id="content" class="content">
             
 
+  <div id="posts" class="posts-expand">
+    
+
+  
+
   
   
   
-  <div class="post-block archive">
-    <div id="posts" class="posts-collapse">
-      <span class="archive-move-on"></span>
-
-      <span class="archive-page-counter">
-        
-        
-        
-          
-        
-        嗯..! 目前共计 2 篇日志。 继续努力。
-      </span>
-
-      
-
-        
-        
-        
-
-        
-          
-          <div class="collection-title">
-            <h1 class="archive-year" id="archive-year-2018">2018</h1>
-          </div>
-        
-        
-
-        
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://gaohangcs.com/2018/09/11/KNN/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="高航">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="高航的博客">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2018/09/11/KNN/" itemprop="url">
-              
-                <span itemprop="name">KNN学习笔记</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">KNN学习笔记</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-09-11T13:01:00+08:00"
-              content="2018-09-11" >
-          09-11
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-11T13:01:00+08:00">
+                2018-09-11
+              </time>
+            
 
-    </header>
-  </article>
+            
 
+            
+          </span>
 
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o">浏览数</i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/09/08/使用CSDN-markdown编辑器/" itemprop="url">
-              
-                <span itemprop="name">使用Markdown编辑器写博客</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-09-08T17:20:00+08:00"
-              content="2018-09-08" >
-          09-08
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
       
 
+      
+        <h1 id="KNN"><a href="#KNN" class="headerlink" title="KNN"></a>KNN</h1><ul>
+<li><strong>是什么/原理</strong></li>
+<li><strong>核心思想：“近朱者赤，近墨者黑”，由你的邻居来推断出你的类别</strong></li>
+<li><strong>python实现</strong></li>
+<li><strong>算法不足之处</strong></li>
+</ul>
+<hr>
+<h2 id="是什么-原理"><a href="#是什么-原理" class="headerlink" title="是什么/原理"></a>是什么/原理</h2><ul>
+<li>k近邻法（KNN）是一种基本分类与回归方法，是“懒惰学习”的代表，其算法的时间复杂度是O(n)，一般适用于样本数较少的数据集。其输出可以是多类。</li>
+<li>k近邻法没有显式的学习过程，即没有训练阶段，数据集事先已有了分类和特征值，待收到新样本后直接进行处理。</li>
+<li>相似度衡量方法：包括欧式距离（p=2）、曼哈顿距离（p=1）、夹角余弦。</li>
+<li>简单应用中，一般使用欧氏距离，但对于文本分类来说，使用余弦来计算相似度就比欧式距离更合适。</li>
+<li>K近邻法的三个基本要素是：k值的选择、距离度量、分类决策规则。</li>
+</ul>
+<h2 id="核心思想"><a href="#核心思想" class="headerlink" title="核心思想"></a>核心思想</h2><p>k近邻法中k值的选择会对k近邻法的结果产生重大影响。选取的k值若较小，就相当于用较小的领域中的训练实例进行预测，“学习”的近似误差会减小，只有与输入实例较近的训练实例才会对预测结果起作用，但缺点是“学习”的估计误差会增大，预测结果会对近邻的实例点非常敏感。反之，若选取的k值较大，其优点是可以减少学习的估计误差，但缺点是学习的近似误差会增大。K值的增大意味整体的模型变得简单（k值越小模型越复杂，k值较小可能产生过拟合的现象）。所以在应用中，k值一般取一个比较小的数值，通常采用交叉验证法来选取最优的k值。  </p>
+<h3 id="Q：什么是近似误差和估计误差？"><a href="#Q：什么是近似误差和估计误差？" class="headerlink" title="Q：什么是近似误差和估计误差？"></a>Q：什么是近似误差和估计误差？</h3><p>近似误差可以理解为模型估计值与实际值之间的差距。<br>估计误差可以理解为模型的估计系数与实际系数之间的差距。<br>近似误差，更关注于“训练”。最小化近似误差，即为使估计值尽量接近真实值，这里的真实值指的是训练样本，模型本身并不是最接近真实分布。换一组样本可能就不近似了，这种训练样本表现好，测试样本表现不好的现象称为过拟合。<br>估计误差，更关注于“测试”、“泛化”。与近似误差相反，最小化估计误差，即为使估计系数尽量接近真实系数，可能此时对于训练样本得到的估计值不一定最接近真实值，但模型肯呢个更加接近真实分布。<br><img src="https://gss2.bdstatic.com/-fo3dSag_xI4khGkpoWK1HF6hhy/baike/w%3D268/sign=fc3731ea0ad162d985ee651a29dfa950/bf096b63f6246b60f20ccd5aebf81a4c510fa29a.jpg" alt="avatar"><br>如图（图片来自百度百科）<br>K值若较小，这里取内圈，红色三角占2/3，则绿色的未知物被判断为红色三角；<br>K值若较大，这里取外圈，蓝色方块占3/5，则绿色未知物被判断为蓝色方块。</p>
+<h3 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> numpy <span class="keyword">import</span> *  <span class="comment"># 引入科学计算包</span></span><br><span class="line"><span class="keyword">import</span> operator  <span class="comment"># 经典python函数库。运算符模块。</span></span><br><span class="line"><span class="comment"># 创建数据集</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">createDataSet</span><span class="params">()</span>:</span></span><br><span class="line">    group = array([[<span class="number">1.0</span>, <span class="number">1.1</span>], [<span class="number">1.0</span>, <span class="number">1.0</span>], [<span class="number">0</span>, <span class="number">0</span>], [<span class="number">0</span>, <span class="number">0.1</span>]])</span><br><span class="line">    labels = [<span class="string">'A'</span>, <span class="string">'A'</span>, <span class="string">'B'</span>, <span class="string">'B'</span>]</span><br><span class="line">    <span class="keyword">return</span> group, labels</span><br><span class="line">    </span><br><span class="line"><span class="comment"># 算法核心</span></span><br><span class="line"><span class="comment"># inX：用于分类的输入向量。即将对其进行分类。</span></span><br><span class="line"><span class="comment"># dataSet：训练样本集</span></span><br><span class="line"><span class="comment"># labels: 标签向量</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">classfy0</span><span class="params">(inX, dataSet, labels, k)</span>:</span></span><br><span class="line"><span class="comment"># 距离计算（这里用的欧氏距离）</span></span><br><span class="line">    dataSetSize = dataSet.shape[<span class="number">0</span>]  <span class="comment"># 得到数组的行数。即知道有几个训练数据</span></span><br><span class="line">    diffMat = tile(inX, (dataSetSize, <span class="number">1</span>)) - dataSet  <span class="comment"># tile:numpy中的函数。tile将原来的一个数组，扩充成了4个一样的数组。diffMat得到了目标与训练数值之间的差值。</span></span><br><span class="line">    sqDiffMat = diffMat ** <span class="number">2</span>  <span class="comment"># 各个元素分别平方</span></span><br><span class="line">    sqDistances = sqDiffMat.sum(axis=<span class="number">1</span>)  <span class="comment"># sum(axis=1)函数表示按行求和，一般默认</span></span><br></pre></td></tr></table></figure>
+<p>###注释<br>axis=0即默认列求和<br>distances = sqDistances ** 0.5  # 开方，得到距离。<br>假如：（这里用的欧氏距离）<br>Newinput：[1,0,2]<br>Dataset:<br>[1,0,1]<br>[2,1,3]<br>[1,0,2]<br>计算过程即为：<br>1、求差<br>[1,0,1]   –    [1,0,2]  = [0,0,-1]<br>[2,1,3]   –    [1,0,2]  = [1,1,1]<br>[1,0,2]   –    [1,0,2]  = [0,0,-1]</p>
+<p>2、对差值平方<br>[0,0,1]<br>[1,1,1]<br>[0,0,1]<br>3、将平方后的差值累加<br>1<br>3<br>1<br>4、将上一步骤的值求开方，即得距离<br>1<br>1.73<br>1<br>这就是以上的步骤</p>
+<h3 id="代码块"><a href="#代码块" class="headerlink" title="代码块"></a>代码块</h3><pre><code class="python">sortedDistIndicies = distances.argsort()  <span class="comment"># 升序排列</span>
+    <span class="comment"># 选择距离最小的k个点。</span>
+    classCount = {}
+    <span class="keyword">for</span> i <span class="keyword">in</span> range(k):
+        voteIlabel = labels[sortedDistIndicies[i]]
+        classCount[voteIlabel] = classCount.get(voteIlabel, <span class="number">0</span>) + <span class="number">1</span>
+    <span class="comment"># 排序</span>
+    sortedClassCount = sorted(classCount.items(), key=operator.itemgetter(<span class="number">1</span>), reverse=<span class="keyword">True</span>)     <span class="comment">#Python3.5中：iteritems变为items</span>
+    <span class="keyword">return</span> sortedClassCount[<span class="number">0</span>][<span class="number">0</span>]
+
+<span class="keyword">if</span> __name__== <span class="string">'__main__'</span>:
+    dataSet, labels = createDataSet()
+    input = array([<span class="number">1.1</span>, <span class="number">0.3</span>])
+    K = <span class="number">3</span>
+    output = classfy0(input, dataSet, labels, K)
+print(<span class="string">"测试数据为:"</span>, input, <span class="string">"分类结果为："</span>, output)
+
+</code></pre>
+<h3 id="算法不足之处"><a href="#算法不足之处" class="headerlink" title="算法不足之处"></a>算法不足之处</h3><ol>
+<li>样本不平衡容易导致结果错误；</li>
+<li>计算量较大。</li>
+</ol>
+
+      
     </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/09/08/使用CSDN-markdown编辑器/" rel="next" title="使用Markdown编辑器写博客">
+                <i class="fa fa-chevron-left"></i> 使用Markdown编辑器写博客
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
 
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -481,6 +559,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -501,8 +583,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -585,6 +676,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#KNN"><span class="nav-number">1.</span> <span class="nav-text">KNN</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#是什么-原理"><span class="nav-number">1.1.</span> <span class="nav-text">是什么/原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#核心思想"><span class="nav-number">1.2.</span> <span class="nav-text">核心思想</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Q：什么是近似误差和估计误差？"><span class="nav-number">1.2.1.</span> <span class="nav-text">Q：什么是近似误差和估计误差？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实现"><span class="nav-number">1.2.2.</span> <span class="nav-text">实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码块"><span class="nav-number">1.2.3.</span> <span class="nav-text">代码块</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#算法不足之处"><span class="nav-number">1.2.4.</span> <span class="nav-text">算法不足之处</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -745,6 +852,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
