@@ -384,6 +384,196 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://gaohangcs.com/2018/09/18/Java基础（一）/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="高航">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="高航的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/09/18/Java基础（一）/" itemprop="url">Java基础（一）</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-18T17:16:00+08:00">
+                2018-09-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java/" itemprop="url" rel="index">
+                    <span itemprop="name">Java</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="eclipse内容辅助键"><a href="#eclipse内容辅助键" class="headerlink" title="eclipse内容辅助键"></a>eclipse内容辅助键</h2><p>alt + /</p>
+<pre><code>main，然后alt + /，回车
+
+syso，然后alt + /，回车
+</code></pre><hr>
+<h2 id="eclipse内容快捷键"><a href="#eclipse内容快捷键" class="headerlink" title="eclipse内容快捷键"></a>eclipse内容快捷键</h2><p>注释：</p>
+<pre><code>单行：选中内容，ctrl + /，再来一次就是取消注释
+多行：选中内容，ctrl + shift + /，取消注释 ctrl + shift + \
+格式化：
+ctrl + shift + f    或  右键--source--format
+</code></pre><h2 id="逻辑"><a href="#逻辑" class="headerlink" title="逻辑"></a>逻辑</h2><p>&amp;&amp;和&amp;结果一样</p>
+<p>||和|结果一样</p>
+<p>&amp;  左边是false，右边也要执行，返回false</p>
+<p>&amp;&amp; 左边是false，右边则不执行，直接返回false</p>
+<p>|  左边是true，右边也要执行，返回true</p>
+<p>|| 左边是true，右边则不执行，直接返回true</p>
+<h2 id="输入"><a href="#输入" class="headerlink" title="输入"></a>输入</h2><p>输入的步骤：</p>
+<pre><code>A:导包
+
+  import java.util.Scanner;
+
+  类中的顺序：package &gt; import &gt; class
+
+B:创建对象
+
+  Scanner sc = new Scanner(System.in);
+
+C:接收数据
+
+  int i = sc.nextInt();
+</code></pre><h3 id="关于导包"><a href="#关于导包" class="headerlink" title="关于导包"></a>关于导包</h3><pre><code>A:手动导包
+  import java.util.Scanner;
+
+B:鼠标点击红色叉叉，自动生成
+
+C:快捷键(推荐)
+  ctrl+shift+o
+</code></pre><h2 id="Random-用于产生随机数"><a href="#Random-用于产生随机数" class="headerlink" title="Random:用于产生随机数"></a>Random:用于产生随机数</h2><p>###使用步骤：</p>
+<pre><code>A:导包
+  import java.util.Random;
+B:创建对象
+  Random r = new Random();
+C:获取随机数
+  int number = r.nextInt(10);
+  获取数据的范围：[0,10) 包括0,不包括10
+</code></pre><h3 id="Q：如何获取1-100之间的随机数呢"><a href="#Q：如何获取1-100之间的随机数呢" class="headerlink" title="Q：如何获取1-100之间的随机数呢?"></a>Q：如何获取1-100之间的随机数呢?</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">//int i = r.nextInt(100); //[0,99]</span><br><span class="line">int i = r.nextInt(100) + 1;	//[1,100]</span><br><span class="line">System.out.println(&quot;i:&quot;+i);</span><br><span class="line"></span><br><span class="line">System.out.println():输出内容,并换行</span><br><span class="line">System.out.print():输出内容</span><br></pre></td></tr></table></figure>
+<h2 id="方法重载"><a href="#方法重载" class="headerlink" title="方法重载"></a>方法重载</h2><p>###方法重载：在同一个类中，出现了方法名相同的情况。</p>
+<p>###方法重载的特点：<br>    方法名相同，参数列表不同。与返回值无关。<br>    参数列表不同<br>    参数的个数不同<br>    参数对应的数据类型不同</p>
+<p>###注意：<br>&emsp;&emsp;在调用方法的时候，java虚拟机会通过参数列表的不同来区分同名的方法。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://gaohangcs.com/2018/09/18/从log文件中取出IP地址/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -477,7 +667,7 @@
       
         
           
-            <h2 id="从log文件中取出IP地址并去重"><a href="#从log文件中取出IP地址并去重" class="headerlink" title=" 从log文件中取出IP地址并去重"></a> <strong>从log文件中取出IP地址并去重</strong></h2><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>&emsp;&emsp;这一周多的时间做的工作十分枯燥，就是将反爬虫系统爬取下来的38000多个数据（IP地址信息）进行划分，将它们人工标注成爬虫和人类行为。</p>
+            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>&emsp;&emsp;这一周多的时间做的工作十分枯燥，就是将反爬虫系统爬取下来的38000多个数据（IP地址信息）进行划分，将它们人工标注成爬虫和人类行为。</p>
 <p>&emsp;&emsp;在全部标注完成后需要与原数据集中进行对比。对比后发现总数703个IP地址，但我只标注了695个，比总数少了8个，于是就有了这篇博文的内容。</p>
 <h3 id="原始数据集"><a href="#原始数据集" class="headerlink" title="原始数据集"></a>原始数据集</h3><p><img src="foldername/9.18.png" alt=""></p>
 <p>&emsp;&emsp;如上图所示，一行数据有很多信息，我只想要提取出第一个开头的IP地址，这里就要用到文件读取、正则表达式等知识。</p>
@@ -1012,7 +1202,7 @@ print(<span class="string">"测试数据为:"</span>, input, <span class="string
               
                 <a href="/archive">
               
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1023,7 +1213,7 @@ print(<span class="string">"测试数据为:"</span>, input, <span class="string
               
               <div class="site-state-item site-state-categories">
                 
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">分类</span>
                 
               </div>
@@ -1034,7 +1224,7 @@ print(<span class="string">"测试数据为:"</span>, input, <span class="string
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">标签</span>
                 
               </div>

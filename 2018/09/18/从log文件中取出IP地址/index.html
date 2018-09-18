@@ -107,19 +107,19 @@
 
 
 
-<meta name="description" content="从log文件中取出IP地址并去重前言&amp;emsp;&amp;emsp;这一周多的时间做的工作十分枯燥，就是将反爬虫系统爬取下来的38000多个数据（IP地址信息）进行划分，将它们人工标注成爬虫和人类行为。 &amp;emsp;&amp;emsp;在全部标注完成后需要与原数据集中进行对比。对比后发现总数703个IP地址，但我只标注了695个，比总数少了8个，于是就有了这篇博文的内容。 原始数据集 &amp;emsp;&amp;emsp;如">
+<meta name="description" content="前言&amp;emsp;&amp;emsp;这一周多的时间做的工作十分枯燥，就是将反爬虫系统爬取下来的38000多个数据（IP地址信息）进行划分，将它们人工标注成爬虫和人类行为。 &amp;emsp;&amp;emsp;在全部标注完成后需要与原数据集中进行对比。对比后发现总数703个IP地址，但我只标注了695个，比总数少了8个，于是就有了这篇博文的内容。 原始数据集 &amp;emsp;&amp;emsp;如上图所示，一行数据有很多信息，我只">
 <meta name="keywords" content="python">
 <meta property="og:type" content="article">
 <meta property="og:title" content="从log文件中取出IP地址并去重">
 <meta property="og:url" content="http://gaohangcs.com/2018/09/18/从log文件中取出IP地址/index.html">
 <meta property="og:site_name" content="高航的博客">
-<meta property="og:description" content="从log文件中取出IP地址并去重前言&amp;emsp;&amp;emsp;这一周多的时间做的工作十分枯燥，就是将反爬虫系统爬取下来的38000多个数据（IP地址信息）进行划分，将它们人工标注成爬虫和人类行为。 &amp;emsp;&amp;emsp;在全部标注完成后需要与原数据集中进行对比。对比后发现总数703个IP地址，但我只标注了695个，比总数少了8个，于是就有了这篇博文的内容。 原始数据集 &amp;emsp;&amp;emsp;如">
+<meta property="og:description" content="前言&amp;emsp;&amp;emsp;这一周多的时间做的工作十分枯燥，就是将反爬虫系统爬取下来的38000多个数据（IP地址信息）进行划分，将它们人工标注成爬虫和人类行为。 &amp;emsp;&amp;emsp;在全部标注完成后需要与原数据集中进行对比。对比后发现总数703个IP地址，但我只标注了695个，比总数少了8个，于是就有了这篇博文的内容。 原始数据集 &amp;emsp;&amp;emsp;如上图所示，一行数据有很多信息，我只">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://gaohangcs.com/2018/09/18/从log文件中取出IP地址/foldername/9.18.png">
-<meta property="og:updated_time" content="2018-09-18T09:03:42.553Z">
+<meta property="og:updated_time" content="2018-09-18T09:07:02.857Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="从log文件中取出IP地址并去重">
-<meta name="twitter:description" content="从log文件中取出IP地址并去重前言&amp;emsp;&amp;emsp;这一周多的时间做的工作十分枯燥，就是将反爬虫系统爬取下来的38000多个数据（IP地址信息）进行划分，将它们人工标注成爬虫和人类行为。 &amp;emsp;&amp;emsp;在全部标注完成后需要与原数据集中进行对比。对比后发现总数703个IP地址，但我只标注了695个，比总数少了8个，于是就有了这篇博文的内容。 原始数据集 &amp;emsp;&amp;emsp;如">
+<meta name="twitter:description" content="前言&amp;emsp;&amp;emsp;这一周多的时间做的工作十分枯燥，就是将反爬虫系统爬取下来的38000多个数据（IP地址信息）进行划分，将它们人工标注成爬虫和人类行为。 &amp;emsp;&amp;emsp;在全部标注完成后需要与原数据集中进行对比。对比后发现总数703个IP地址，但我只标注了695个，比总数少了8个，于是就有了这篇博文的内容。 原始数据集 &amp;emsp;&amp;emsp;如上图所示，一行数据有很多信息，我只">
 <meta name="twitter:image" content="http://gaohangcs.com/2018/09/18/从log文件中取出IP地址/foldername/9.18.png">
 
 
@@ -481,7 +481,7 @@
       
 
       
-        <h2 id="从log文件中取出IP地址并去重"><a href="#从log文件中取出IP地址并去重" class="headerlink" title=" 从log文件中取出IP地址并去重"></a> <strong>从log文件中取出IP地址并去重</strong></h2><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>&emsp;&emsp;这一周多的时间做的工作十分枯燥，就是将反爬虫系统爬取下来的38000多个数据（IP地址信息）进行划分，将它们人工标注成爬虫和人类行为。</p>
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>&emsp;&emsp;这一周多的时间做的工作十分枯燥，就是将反爬虫系统爬取下来的38000多个数据（IP地址信息）进行划分，将它们人工标注成爬虫和人类行为。</p>
 <p>&emsp;&emsp;在全部标注完成后需要与原数据集中进行对比。对比后发现总数703个IP地址，但我只标注了695个，比总数少了8个，于是就有了这篇博文的内容。</p>
 <h3 id="原始数据集"><a href="#原始数据集" class="headerlink" title="原始数据集"></a>原始数据集</h3><p><img src="foldername/9.18.png" alt=""></p>
 <p>&emsp;&emsp;如上图所示，一行数据有很多信息，我只想要提取出第一个开头的IP地址，这里就要用到文件读取、正则表达式等知识。</p>
@@ -524,6 +524,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/09/18/Java基础（一）/" rel="prev" title="Java基础（一）">
+                Java基础（一） <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -604,7 +608,7 @@
               
                 <a href="/archive">
               
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -615,7 +619,7 @@
               
               <div class="site-state-item site-state-categories">
                 
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">分类</span>
                 
               </div>
@@ -626,7 +630,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">标签</span>
                 
               </div>
@@ -704,7 +708,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#从log文件中取出IP地址并去重"><span class="nav-number">1.</span> <span class="nav-text"> 从log文件中取出IP地址并去重</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">2.</span> <span class="nav-text">前言</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#原始数据集"><span class="nav-number">2.1.</span> <span class="nav-text">原始数据集</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码块"><span class="nav-number">2.2.</span> <span class="nav-text">代码块</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#原始数据集"><span class="nav-number">1.1.</span> <span class="nav-text">原始数据集</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码块"><span class="nav-number">1.2.</span> <span class="nav-text">代码块</span></a></li></ol></li></ol></div>
             
 
           </div>
