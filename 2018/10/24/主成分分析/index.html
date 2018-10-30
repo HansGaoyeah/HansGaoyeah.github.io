@@ -115,7 +115,7 @@
 <meta property="og:site_name" content="高航的博客">
 <meta property="og:description" content="主成分分析&amp;emsp;&amp;emsp;用较少的变量去解释原始数据中的大部分变量，即将许多相关性很高的变量转化成彼此相互独立或不相关的变量。 &amp;emsp;&amp;emsp;在python中，主成分分析的函数位于scikit-learn下： 1sklearn.decomposition.PCA(n_components = None, copy = True, whiten = False) PCA算法流程&amp;">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-10-30T13:54:48.423Z">
+<meta property="og:updated_time" content="2018-10-30T13:56:21.367Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="主成分分析">
 <meta name="twitter:description" content="主成分分析&amp;emsp;&amp;emsp;用较少的变量去解释原始数据中的大部分变量，即将许多相关性很高的变量转化成彼此相互独立或不相关的变量。 &amp;emsp;&amp;emsp;在python中，主成分分析的函数位于scikit-learn下： 1sklearn.decomposition.PCA(n_components = None, copy = True, whiten = False) PCA算法流程&amp;">
@@ -433,8 +433,7 @@
 <p>　　　　5）对样本集中的每一个样本x(i)x(i),转化为新的样本z(i)=WTx(i)z(i)=WTx(i)</p>
 <p>　　　　6) 得到输出样本集D′=(z(1),z(2),…,z(m))D′=(z(1),z(2),…,z(m))</p>
 <p>&emsp;&emsp;有时候，我们不指定降维后的n’的值，而是换种方式，指定一个降维到的主成分比重阈值t。这个阈值t在（0,1]之间。</p>
-<p>##PCA算法总结</p>
-<p>&emsp;&emsp;这里对PCA算法做一个总结。作为一个非监督学习的降维方法，它只需要特征值分解，就可以对数据进行压缩，去噪。因此在实际场景应用很广泛。为了克服PCA的一些缺点，出现了很多PCA的变种，比如第六节的为解决非线性降维的KPCA，还有解决内存限制的增量PCA方法Incremental PCA，以及解决稀疏数据降维的PCA方法Sparse PCA等。</p>
+<h2 id="PCA算法总结"><a href="#PCA算法总结" class="headerlink" title="PCA算法总结"></a>PCA算法总结</h2><p>&emsp;&emsp;这里对PCA算法做一个总结。作为一个非监督学习的降维方法，它只需要特征值分解，就可以对数据进行压缩，去噪。因此在实际场景应用很广泛。为了克服PCA的一些缺点，出现了很多PCA的变种，比如第六节的为解决非线性降维的KPCA，还有解决内存限制的增量PCA方法Incremental PCA，以及解决稀疏数据降维的PCA方法Sparse PCA等。</p>
 <p>　　　　PCA算法的主要优点有：</p>
 <p>　　　　1）仅仅需要以方差衡量信息量，不受数据集以外的因素影响。　</p>
 <p>　　　　2）各主成分之间正交，可消除原始数据成分间的相互影响的因素。</p>
@@ -442,12 +441,12 @@
 <p>　　　　PCA算法的主要缺点有：</p>
 <p>　　　　1）主成分各个特征维度的含义具有一定的模糊性，不如原始样本特征的解释性强。</p>
 <p>　　　　2）方差小的非主成分也可能含有对样本差异的重要信息，因降维丢弃可能对后续数据处理有影响。</p>
-<p>##sklearn.decomposition.PCA参数介绍<br>PCA类基本不需要调参，一般来说，我们只需要指定我们需要降维到的维度，或者我们希望降维后的主成分的方差和占原始维度所有特征方差和的比例阈值就可以了。</p>
+<h2 id="sklearn-decomposition-PCA参数介绍"><a href="#sklearn-decomposition-PCA参数介绍" class="headerlink" title="sklearn.decomposition.PCA参数介绍"></a>sklearn.decomposition.PCA参数介绍</h2><p>PCA类基本不需要调参，一般来说，我们只需要指定我们需要降维到的维度，或者我们希望降维后的主成分的方差和占原始维度所有特征方差和的比例阈值就可以了。</p>
 <p>1）n_components：这个参数可以帮我们指定希望PCA降维后的特征维度数目。最常用的做法是直接指定降维到的维度数目，此时n_components是一个大于等于1的整数。当然，我们也可以指定主成分的方差和所占的最小比例阈值，让PCA类自己去根据样本特征方差来决定降维到的维度数，此时n_components是一个（0，1]之间的数。当然，我们还可以将参数设置为”mle”, 此时PCA类会用MLE算法根据特征的方差分布情况自己去选择一定数量的主成分特征来降维。我们也可以用默认值，即不输入n_components，此时n_components=min(样本数，特征数)。</p>
 <p>2）whiten ：判断是否进行白化。所谓白化，就是对降维后的数据的每个特征进行归一化，让方差都为1.对于PCA降维本身来说，一般不需要白化。如果你PCA降维后有后续的数据处理动作，可以考虑白化。默认值是False，即不进行白化。</p>
 <p>3）svd_solver：即指定奇异值分解SVD的方法，由于特征分解是奇异值分解SVD的一个特例，一般的PCA库都是基于SVD实现的。有4个可以选择的值：{‘auto’, ‘full’, ‘arpack’, ‘randomized’}。randomized一般适用于数据量大，数据维度多同时主成分数目比例又较低的PCA降维，它使用了一些加快SVD的随机算法。 full则是传统意义上的SVD，使用了scipy库对应的实现。arpack和randomized的适用场景类似，区别是randomized使用的是scikit-learn自己的SVD实现，而arpack直接使用了scipy库的sparse SVD实现。默认是auto，即PCA类会自己去在前面讲到的三种算法里面去权衡，选择一个合适的SVD算法来降维。一般来说，使用默认值就够了。</p>
 <p>除了这些输入参数外，有两个PCA类的成员值得关注。第一个是explained_variance_，它代表降维后的各主成分的方差值。方差值越大，则说明越是重要的主成分。第二个是explained_variance_ratio_，它代表降维后的各主成分的方差值占总方差值的比例，这个比例越大，则越是重要的主成分。</p>
-<p>##PCA实例<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">import numpy as np</span><br><span class="line">import matplotlib.pyplot as plt</span><br><span class="line">from mpl_toolkits.mplot3d import Axes3D</span><br><span class="line">%matplotlib inline</span><br><span class="line">from sklearn.datasets.samples_generator import make_blobs</span><br><span class="line"># X为样本特征，Y为样本簇类别， 共1000个样本，每个样本3个特征，共4个簇</span><br><span class="line">X, y = make_blobs(n_samples=10000, n_features=3, centers=[[3,3, 3], [0,0,0], [1,1,1], [2,2,2]], cluster_std=[0.2, 0.1, 0.2, 0.2], </span><br><span class="line">                  random_state =9)</span><br><span class="line">fig = plt.figure()</span><br><span class="line">ax = Axes3D(fig, rect=[0, 0, 1, 1], elev=30, azim=20)</span><br><span class="line">plt.scatter(X[:, 0], X[:, 1], X[:, 2],marker=&apos;o&apos;)</span><br></pre></td></tr></table></figure></p>
+<h2 id="PCA实例"><a href="#PCA实例" class="headerlink" title="PCA实例"></a>PCA实例</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">import numpy as np</span><br><span class="line">import matplotlib.pyplot as plt</span><br><span class="line">from mpl_toolkits.mplot3d import Axes3D</span><br><span class="line">%matplotlib inline</span><br><span class="line">from sklearn.datasets.samples_generator import make_blobs</span><br><span class="line"># X为样本特征，Y为样本簇类别， 共1000个样本，每个样本3个特征，共4个簇</span><br><span class="line">X, y = make_blobs(n_samples=10000, n_features=3, centers=[[3,3, 3], [0,0,0], [1,1,1], [2,2,2]], cluster_std=[0.2, 0.1, 0.2, 0.2], </span><br><span class="line">                  random_state =9)</span><br><span class="line">fig = plt.figure()</span><br><span class="line">ax = Axes3D(fig, rect=[0, 0, 1, 1], elev=30, azim=20)</span><br><span class="line">plt.scatter(X[:, 0], X[:, 1], X[:, 2],marker=&apos;o&apos;)</span><br></pre></td></tr></table></figure>
 <p>我们先不降维，只对数据进行投影，看看投影后的三个维度的方差分布，代码如下：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">from sklearn.decomposition import PCA</span><br><span class="line">pca = PCA(n_components=3)</span><br><span class="line">pca.fit(X)</span><br><span class="line">print pca.explained_variance_ratio_</span><br><span class="line">print pca.explained_variance_</span><br></pre></td></tr></table></figure>
 <p>输出如下：</p>
@@ -701,7 +700,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#主成分分析"><span class="nav-number">1.</span> <span class="nav-text">主成分分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PCA算法流程"><span class="nav-number">2.</span> <span class="nav-text">PCA算法流程</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#主成分分析"><span class="nav-number">1.</span> <span class="nav-text">主成分分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PCA算法流程"><span class="nav-number">2.</span> <span class="nav-text">PCA算法流程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PCA算法总结"><span class="nav-number">3.</span> <span class="nav-text">PCA算法总结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#sklearn-decomposition-PCA参数介绍"><span class="nav-number">4.</span> <span class="nav-text">sklearn.decomposition.PCA参数介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PCA实例"><span class="nav-number">5.</span> <span class="nav-text">PCA实例</span></a></li></ol></div>
             
 
           </div>
