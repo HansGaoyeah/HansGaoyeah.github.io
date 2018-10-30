@@ -324,6 +324,187 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://gaohangcs.com/2018/10/24/主成分分析/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="高航">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="高航的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/10/24/主成分分析/" itemprop="url">未命名</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-24T18:50:31+08:00">
+                2018-10-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <hr>
+<p>title: 主成分分析<br>date: 2018-10-24 19:20:00<br>categories: 数据挖掘<br>tags: 数据挖掘</p>
+<hr>
+<h2 id="主成分分析"><a href="#主成分分析" class="headerlink" title="主成分分析"></a>主成分分析</h2><p>&emsp;&emsp;用较少的变量去解释原始数据中的大部分变量，即将许多相关性很高的变量转化成彼此相互独立或不相关的变量。</p>
+<p>&emsp;&emsp;在python中，主成分分析的函数位于scikit-learn下：</p>
+<p>‘’’python<br>sklearn.decomposition.PCA(n_components = None, copy = True, whiten = False)<br>‘’’</p>
+<h2 id="PCA算法流程"><a href="#PCA算法流程" class="headerlink" title="PCA算法流程"></a>PCA算法流程</h2><p>&emsp;&emsp;求样本x(i)x(i)的n’维的主成分其实就是求样本集的协方差矩阵XXTXXT的前n’个特征值对应特征向量矩阵W，然后对于每个样本x(i)x(i),做如下变换z(i)=WTx(i)z(i)=WTx(i)，即达到降维的PCA目的。</p>
+<p>输入：n维样本集D=(x(1),x(2),…,x(m))D=(x(1),x(2),…,x(m))，要降维到的维数n’.</p>
+<p>输出：降维后的样本集D′D′</p>
+<p>　　　　1) 对所有的样本进行中心化： x(i)=x(i)−1m∑j=1mx(j)x(i)=x(i)−1m∑j=1mx(j)</p>
+<p>　　　　2) 计算样本的协方差矩阵XXTXXT</p>
+<p>　　　　3) 对矩阵XXTXXT进行特征值分解</p>
+<p>　　　　4）取出最大的n’个特征值对应的特征向量(w1,w2,…,wn′)(w1,w2,…,wn′), 将所有的特征向量标准化后，组成特征向量矩阵W。</p>
+<p>　　　　5）对样本集中的每一个样本x(i)x(i),转化为新的样本z(i)=WTx(i)z(i)=WTx(i)</p>
+<p>　　　　6) 得到输出样本集D′=(z(1),z(2),…,z(m))D′=(z(1),z(2),…,z(m))</p>
+<p>&emsp;&emsp;有时候，我们不指定降维后的n’的值，而是换种方式，指定一个降维到的主成分比重阈值t。这个阈值t在（0,1]之间。</p>
+<p>##PCA算法总结</p>
+<p>&emsp;&emsp;这里对PCA算法做一个总结。作为一个非监督学习的降维方法，它只需要特征值分解，就可以对数据进行压缩，去噪。因此在实际场景应用很广泛。为了克服PCA的一些缺点，出现了很多PCA的变种，比如第六节的为解决非线性降维的KPCA，还有解决内存限制的增量PCA方法Incremental PCA，以及解决稀疏数据降维的PCA方法Sparse PCA等。</p>
+<p>　　　　PCA算法的主要优点有：</p>
+<p>　　　　1）仅仅需要以方差衡量信息量，不受数据集以外的因素影响。　</p>
+<p>　　　　2）各主成分之间正交，可消除原始数据成分间的相互影响的因素。</p>
+<p>　　　　3）计算方法简单，主要运算是特征值分解，易于实现。</p>
+<p>　　　　PCA算法的主要缺点有：</p>
+<p>　　　　1）主成分各个特征维度的含义具有一定的模糊性，不如原始样本特征的解释性强。</p>
+<p>　　　　2）方差小的非主成分也可能含有对样本差异的重要信息，因降维丢弃可能对后续数据处理有影响。</p>
+<p>##sklearn.decomposition.PCA参数介绍<br>PCA类基本不需要调参，一般来说，我们只需要指定我们需要降维到的维度，或者我们希望降维后的主成分的方差和占原始维度所有特征方差和的比例阈值就可以了。</p>
+<p>1）n_components：这个参数可以帮我们指定希望PCA降维后的特征维度数目。最常用的做法是直接指定降维到的维度数目，此时n_components是一个大于等于1的整数。当然，我们也可以指定主成分的方差和所占的最小比例阈值，让PCA类自己去根据样本特征方差来决定降维到的维度数，此时n_components是一个（0，1]之间的数。当然，我们还可以将参数设置为”mle”, 此时PCA类会用MLE算法根据特征的方差分布情况自己去选择一定数量的主成分特征来降维。我们也可以用默认值，即不输入n_components，此时n_components=min(样本数，特征数)。</p>
+<p>2）whiten ：判断是否进行白化。所谓白化，就是对降维后的数据的每个特征进行归一化，让方差都为1.对于PCA降维本身来说，一般不需要白化。如果你PCA降维后有后续的数据处理动作，可以考虑白化。默认值是False，即不进行白化。</p>
+<p>3）svd_solver：即指定奇异值分解SVD的方法，由于特征分解是奇异值分解SVD的一个特例，一般的PCA库都是基于SVD实现的。有4个可以选择的值：{‘auto’, ‘full’, ‘arpack’, ‘randomized’}。randomized一般适用于数据量大，数据维度多同时主成分数目比例又较低的PCA降维，它使用了一些加快SVD的随机算法。 full则是传统意义上的SVD，使用了scipy库对应的实现。arpack和randomized的适用场景类似，区别是randomized使用的是scikit-learn自己的SVD实现，而arpack直接使用了scipy库的sparse SVD实现。默认是auto，即PCA类会自己去在前面讲到的三种算法里面去权衡，选择一个合适的SVD算法来降维。一般来说，使用默认值就够了。</p>
+<p>除了这些输入参数外，有两个PCA类的成员值得关注。第一个是explained_variance_，它代表降维后的各主成分的方差值。方差值越大，则说明越是重要的主成分。第二个是explained_variance_ratio_，它代表降维后的各主成分的方差值占总方差值的比例，这个比例越大，则越是重要的主成分。</p>
+<p>##PCA实例<br>‘’’python<br>import numpy as np<br>import matplotlib.pyplot as plt<br>from mpl_toolkits.mplot3d import Axes3D<br>%matplotlib inline<br>from sklearn.datasets.samples_generator import make_blobs</p>
+<h1 id="X为样本特征，Y为样本簇类别，-共1000个样本，每个样本3个特征，共4个簇"><a href="#X为样本特征，Y为样本簇类别，-共1000个样本，每个样本3个特征，共4个簇" class="headerlink" title="X为样本特征，Y为样本簇类别， 共1000个样本，每个样本3个特征，共4个簇"></a>X为样本特征，Y为样本簇类别， 共1000个样本，每个样本3个特征，共4个簇</h1><p>X, y = make_blobs(n_samples=10000, n_features=3, centers=[[3,3, 3], [0,0,0], [1,1,1], [2,2,2]], cluster_std=[0.2, 0.1, 0.2, 0.2],<br>                  random_state =9)<br>fig = plt.figure()<br>ax = Axes3D(fig, rect=[0, 0, 1, 1], elev=30, azim=20)<br>plt.scatter(X[:, 0], X[:, 1], X[:, 2],marker=’o’)<br>‘’’</p>
+<p>我们先不降维，只对数据进行投影，看看投影后的三个维度的方差分布，代码如下：</p>
+<p>‘’’python<br>from sklearn.decomposition import PCA<br>pca = PCA(n_components=3)<br>pca.fit(X)<br>print pca.explained_variance_ratio_<br>print pca.explained_variance_<br>‘’’</p>
+<p>输出如下：</p>
+<p>[ 0.98318212  0.00850037  0.00831751]</p>
+<p>[ 3.78483785  0.03272285  0.03201892]</p>
+<p>可以看出投影后三个特征维度的方差比例大约为98.3%：0.8%：0.8%。投影后第一个特征占了绝大多数的主成分比例。</p>
+<p>现在我们来进行降维，从三维降到2维，代码如下：</p>
+<p>‘’’python<br>pca = PCA(n_components=2)<br>pca.fit(X)<br>print pca.explained_variance_ratio_<br>print pca.explained_variance_<br>‘’’<br>输出如下：</p>
+<p>[ 0.98318212  0.00850037]</p>
+<p>[ 3.78483785  0.03272285]</p>
+<p>这个结果其实可以预料，因为上面三个投影后的特征维度的方差分别为：[ 3.78483785  0.03272285  0.03201892]，投影到二维后选择的肯定是前两个特征，而抛弃第三个特征。</p>
+<p>现在我们看看不直接指定降维的维度，而指定降维后的主成分方差和比例。<br>‘’’python<br>pca = PCA(n_components=0.95)<br>pca.fit(X)<br>print pca.explained_variance_ratio_<br>print pca.explained_variance_<br>print pca.n_components_<br>‘’’</p>
+<p>我们指定了主成分至少占95%，输出如下：</p>
+<p>[ 0.98318212]</p>
+<p>[ 3.78483785]</p>
+<p>1</p>
+<p>可见只有第一个投影特征被保留。这也很好理解，我们的第一个主成分占投影特征的方差比例高达98%。只选择这一个特征维度便可以满足95%的阈值。我们现在选择阈值99%看看，代码如下：</p>
+<p>‘’’python<br>pca = PCA(n_components=0.99)<br>pca.fit(X)<br>print pca.explained_variance_ratio_<br>print pca.explained_variance_<br>print pca.n_components_<br>‘’’</p>
+<p>此时的输出如下：</p>
+<p>[ 0.98318212  0.00850037]</p>
+<p>[ 3.78483785  0.03272285]</p>
+<p>2</p>
+<p>这个结果也很好理解，因为我们第一个主成分占了98.3%的方差比例，第二个主成分占了0.8%的方差比例，两者一起可以满足我们的阈值。</p>
+<p>最后我们看看让MLE算法自己选择降维维度的效果，代码如下：</p>
+<p>‘’’python<br>pca = PCA(n_components=’mle’)<br>pca.fit(X)<br>print pca.explained_variance_ratio_<br>print pca.explained_variance_<br>print pca.n_components_<br>‘’’</p>
+<p>输出结果如下：</p>
+<p>[ 0.98318212]</p>
+<p>[ 3.78483785]</p>
+<p>1</p>
+<p>可见由于我们的数据的第一个投影特征的方差占比高达98.3%，MLE算法只保留了我们的第一个特征。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://gaohangcs.com/2018/10/15/UIC会议心得/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1334,7 +1515,7 @@ print(<span class="string">"测试数据为:"</span>, input, <span class="string
               
                 <a href="/archive">
               
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
