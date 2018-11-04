@@ -1,0 +1,1225 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="机器学习," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="高航的博客" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="用scikit-learn和pandas学习线性回归这段时间准备将几个传统的机器学习模型给重新复习一遍，今晚便是针对回归分析的复习，主要去做了刘建平老师的博客的一个实例，熟悉scikit-learn和pandas，下面进入正题。 1.获取数据，定义问题数据的介绍在这： http://archive.ics.uci.edu/ml/datasets/Combined+Cycle+Power+Plant">
+<meta name="keywords" content="机器学习">
+<meta property="og:type" content="article">
+<meta property="og:title" content="学习刘建平博客之线性回归实例">
+<meta property="og:url" content="http://gaohangcs.com/2018/11/04/学习刘建平博客之线性回归实例/index.html">
+<meta property="og:site_name" content="高航的博客">
+<meta property="og:description" content="用scikit-learn和pandas学习线性回归这段时间准备将几个传统的机器学习模型给重新复习一遍，今晚便是针对回归分析的复习，主要去做了刘建平老师的博客的一个实例，熟悉scikit-learn和pandas，下面进入正题。 1.获取数据，定义问题数据的介绍在这： http://archive.ics.uci.edu/ml/datasets/Combined+Cycle+Power+Plant">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://gaohangcs.com/2018/11/img/线性回归1.png">
+<meta property="og:image" content="http://gaohangcs.com/2018/11/img/线性回归2.png">
+<meta property="og:image" content="http://gaohangcs.com/2018/11/img/线性回归5.png">
+<meta property="og:image" content="http://gaohangcs.com/2018/11/img/线性回归3.png">
+<meta property="og:image" content="http://gaohangcs.com/2018/11/img/线性回归4.png">
+<meta property="og:image" content="http://gaohangcs.com/2018/11/img/线性回归6.png">
+<meta property="og:updated_time" content="2018-11-04T14:17:23.416Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="学习刘建平博客之线性回归实例">
+<meta name="twitter:description" content="用scikit-learn和pandas学习线性回归这段时间准备将几个传统的机器学习模型给重新复习一遍，今晚便是针对回归分析的复习，主要去做了刘建平老师的博客的一个实例，熟悉scikit-learn和pandas，下面进入正题。 1.获取数据，定义问题数据的介绍在这： http://archive.ics.uci.edu/ml/datasets/Combined+Cycle+Power+Plant">
+<meta name="twitter:image" content="http://gaohangcs.com/2018/11/img/线性回归1.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"always","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://gaohangcs.com/2018/11/04/学习刘建平博客之线性回归实例/"/>
+
+
+
+
+
+  <title>学习刘建平博客之线性回归实例 | 高航的博客</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">高航的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">日积月累</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/home" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/user" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/th" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archive" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://gaohangcs.com/2018/11/04/学习刘建平博客之线性回归实例/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="高航">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="高航的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">学习刘建平博客之线性回归实例</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-04T21:41:39+08:00">
+                2018-11-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o">浏览数</i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="用scikit-learn和pandas学习线性回归"><a href="#用scikit-learn和pandas学习线性回归" class="headerlink" title="用scikit-learn和pandas学习线性回归"></a>用scikit-learn和pandas学习线性回归</h2><p>这段时间准备将几个传统的机器学习模型给重新复习一遍，今晚便是针对回归分析的复习，主要去做了刘建平老师的博客的一个实例，熟悉scikit-learn和pandas，下面进入正题。</p>
+<h3 id="1-获取数据，定义问题"><a href="#1-获取数据，定义问题" class="headerlink" title="1.获取数据，定义问题"></a>1.获取数据，定义问题</h3><p>数据的介绍在这： <a href="http://archive.ics.uci.edu/ml/datasets/Combined+Cycle+Power+Plant" target="_blank" rel="noopener">http://archive.ics.uci.edu/ml/datasets/Combined+Cycle+Power+Plant</a></p>
+<p>数据的下载地址在这： <a href="http://archive.ics.uci.edu/ml/machine-learning-databases/00294/" target="_blank" rel="noopener">http://archive.ics.uci.edu/ml/machine-learning-databases/00294/</a></p>
+<p>里面是一个循环发电场的数据，共有9568个样本数据，每个数据有5列，分别是:AT（温度）, V（压力）, AP（湿度）, RH（压强）, PE（输出电力)。我们不用纠结于每项具体的意思。</p>
+<p>我们的问题是得到一个线性的关系，对应PE是样本输出，而AT/V/AP/RH这4个是样本特征， 机器学习的目的就是得到一个线性回归模型，即:</p>
+<p>PE=θ0+θ1∗AT+θ2∗V+θ3∗AP+θ4∗RHPE=θ0+θ1∗AT+θ2∗V+θ3∗AP+θ4∗RH
+　　　　</p>
+<p>而需要学习的，就是θ0,θ1,θ2,θ3,θ4θ0,θ1,θ2,θ3,θ4这5个参数。</p>
+<h3 id="2-整理数据"><a href="#2-整理数据" class="headerlink" title="2.整理数据"></a>2.整理数据</h3><p>下载后的数据可以发现是一个压缩文件，解压后可以看到里面有一个xlsx文件，我们先用excel把它打开，接着“另存为“”csv格式，保存下来，后面我们就用这个csv来运行线性回归。</p>
+<p>打开这个csv可以发现数据已经整理好，没有非法数据，因此不需要做预处理。但是这些数据并没有归一化，也就是转化为均值0，方差1的格式。也不用我们搞，后面scikit-learn在线性回归时会先帮我们把归一化搞定。</p>
+<h3 id="3-用pandas来读取数据"><a href="#3-用pandas来读取数据" class="headerlink" title="3.用pandas来读取数据"></a>3.用pandas来读取数据</h3><p>先把要导入的库声明了：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">import matplotlib.pyplot as plt</span><br><span class="line">#%matplotlib inline	#ipython里的库，在pycharm里没用</span><br><span class="line">import numpy as np</span><br><span class="line">import pandas as pd</span><br><span class="line">from sklearn import datasets, linear_model</span><br></pre></td></tr></table></figure>
+<p>接着我们就可以用pandas读取数据了：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#read_csv里面的参数是csv在你电脑上的路径，此处csv文件放在目录下面的data目录里</span><br><span class="line">data = pd.read_csv(&apos;./data/ccpp.csv&apos;)</span><br></pre></td></tr></table></figure></p>
+<p>接着读取数据，结果如图所示<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#读取前五行数据，如果是最后五行，用data.tail()</span><br><span class="line">print(data.head())</span><br></pre></td></tr></table></figure></p>
+<p><img src="../../img/线性回归1.png" alt=""></p>
+<h3 id="4-准备运行算法的数据"><a href="#4-准备运行算法的数据" class="headerlink" title="4.准备运行算法的数据"></a>4.准备运行算法的数据</h3><p>我们看看数据的维度<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">data.shape</span><br></pre></td></tr></table></figure></p>
+<p>结果是(9568, 5)。说明我们有9568个样本，每个样本有5列。</p>
+<p>现在我们开始准备样本特征X，我们用AT， V，AP和RH这4个列作为样本特征。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">data.shape</span><br><span class="line">X = data[[&apos;AT&apos;, &apos;V&apos;, &apos;AP&apos;, &apos;RH&apos;]]</span><br><span class="line">print(X.head()) #  可以看到X的前五条输出</span><br><span class="line">#接着我们准备样本输出y， 我们用PE作为样本输出</span><br><span class="line">y = data[[&apos;PE&apos;]]</span><br><span class="line">print(y.head()) #  可以看到y的前五条输出</span><br></pre></td></tr></table></figure></p>
+<p><img src="../../img/线性回归2.png" alt=""></p>
+<h3 id="5-划分训练集和测试集"><a href="#5-划分训练集和测试集" class="headerlink" title="5.划分训练集和测试集"></a>5.划分训练集和测试集</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">from sklearn.model_selection import  train_test_split   #划分训练集和测试集</span><br><span class="line">#  我们把X和y的样本组合划分成两部分，一部分是训练集，一部分是测试集</span><br><span class="line">X_train, X_test, y_train, y_test = train_test_split(X, y, random_state=1)</span><br><span class="line">#  查看下训练集和测试集的维度</span><br><span class="line">#  可以看到75%的样本数据被作为训练集，25%的样本被作为测试集</span><br><span class="line">print(X_train.shape)</span><br><span class="line">print(y_train.shape)</span><br><span class="line">print(X_test.shape)</span><br><span class="line">print(y_test.shape)</span><br></pre></td></tr></table></figure>
+<p>结果如下：</p>
+<p>(7176, 4)</p>
+<p>(7176, 1)</p>
+<p>(2392, 4)</p>
+<p>(2392, 1)　　　　</p>
+<p>可以看到75%的样本数据被作为训练集，25%的样本被作为测试集。</p>
+<h3 id="6-运行scikit-learn的线性模型"><a href="#6-运行scikit-learn的线性模型" class="headerlink" title="6.运行scikit-learn的线性模型"></a>6.运行scikit-learn的线性模型</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">#  scikit-learn的线性回归算法使用的是最小二乘法来实现的</span><br><span class="line">linreg = LinearRegression()</span><br><span class="line">linreg.fit(X_train, y_train)</span><br><span class="line"></span><br><span class="line">#  拟合完毕后，我们看看我们的需要的模型系数结果</span><br><span class="line">#  这样我们就得到了在步骤1里面需要求得的5个值。也就是说PE和其他4个变量的关系如下：</span><br><span class="line">#  PE=447.06297099−1.97376045∗AT−0.23229086∗V+0.0693515∗AP−0.15806957∗RH</span><br><span class="line">print(linreg.intercept_)</span><br><span class="line">print(linreg.coef_)</span><br></pre></td></tr></table></figure>
+<p><img src="../../img/线性回归5.png" alt=""></p>
+<h3 id="7-模型评价"><a href="#7-模型评价" class="headerlink" title="7.模型评价"></a>7.模型评价</h3><p>我们需要评估我们的模型的好坏程度，对于线性回归来说，我们一般用均方差或者均方根差在测试集上的表现来评价模型的好坏<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">#  看看我们的模型的MSE和RMSE</span><br><span class="line">#  模型拟合测试集</span><br><span class="line">y_pred = linreg.predict(X_test)</span><br><span class="line"># 用scikit-learn计算MSE</span><br><span class="line">print(&quot;MSE:&quot;,metrics.mean_squared_error(y_test, y_pred))    #  MSE是均方误差</span><br><span class="line"># 用scikit-learn计算RMSE</span><br><span class="line">print(&quot;RMSE:&quot;,np.sqrt(metrics.mean_squared_error(y_test, y_pred)))  #  RMSE是均方根误差</span><br></pre></td></tr></table></figure></p>
+<p><img src="../../img/线性回归3.png" alt=""></p>
+<p>输出如下：</p>
+<p>MSE: 20.0804012021</p>
+<p>RMSE: 4.48111606657</p>
+<p>得到了MSE或者RMSE，如果我们用其他方法得到了不同的系数，需要选择模型时，就用MSE小的时候对应的参数。</p>
+<p>比如这次我们用AT， V，AP这3个列作为样本特征。不要RH， 输出仍然是PE。代码如下:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">X = data[[&apos;AT&apos;, &apos;V&apos;, &apos;AP&apos;]]</span><br><span class="line">y = data[[&apos;PE&apos;]]</span><br><span class="line">X_train, X_test, y_train, y_test = train_test_split(X, y, random_state=1)</span><br><span class="line">linreg = LinearRegression()</span><br><span class="line">linreg.fit(X_train, y_train)</span><br><span class="line">#模型拟合测试集</span><br><span class="line">y_pred = linreg.predict(X_test)</span><br><span class="line">from sklearn import metrics</span><br><span class="line"># 用scikit-learn计算MSE</span><br><span class="line">print(&quot;MSE:&quot;,metrics.mean_squared_error(y_test, y_pred))</span><br><span class="line"># 用scikit-learn计算RMSE</span><br><span class="line">print(&quot;RMSE:&quot;,np.sqrt(metrics.mean_squared_error(y_test, y_pred)))</span><br></pre></td></tr></table></figure>
+<p>输出如下：</p>
+<p>MSE: 23.2089074701</p>
+<p>RMSE: 4.81756239919</p>
+<p>可以看出，去掉RH后，模型拟合的没有加上RH的好，MSE变大了。</p>
+<h3 id="8-交叉验证"><a href="#8-交叉验证" class="headerlink" title="8.交叉验证"></a>8.交叉验证</h3><p>我们可以通过交叉验证来持续优化模型，代码如下，我们采用10折交叉验证，即cross_val_predict中的cv参数为10：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">X = data[[&apos;AT&apos;, &apos;V&apos;, &apos;AP&apos;, &apos;RH&apos;]]</span><br><span class="line">y = data[[&apos;PE&apos;]]</span><br><span class="line">from sklearn.model_selection import cross_val_predict</span><br><span class="line">predicted = cross_val_predict(linreg, X, y, cv=10)</span><br><span class="line"># 用scikit-learn计算MSE</span><br><span class="line">print(&quot;MSE:&quot;,metrics.mean_squared_error(y, predicted))</span><br><span class="line"># 用scikit-learn计算RMSE</span><br><span class="line">print(&quot;RMSE:&quot;,np.sqrt(metrics.mean_squared_error(y, predicted)))</span><br></pre></td></tr></table></figure></p>
+<p><img src="../../img/线性回归4.png" alt=""></p>
+<p>可以看出，采用交叉验证模型的MSE比第一次的大，主要原因是我们这里是对所有折的样本做测试集对应的预测值的MSE，而第一次仅仅对25%的测试集做了MSE。两者的先决条件并不同。</p>
+<h3 id="9-画图观察结果"><a href="#9-画图观察结果" class="headerlink" title="9.画图观察结果"></a>9.画图观察结果</h3><p>这里画图真实值和预测值的变化关系，离中间的直线y=x直接越近的点代表预测损失越低。代码如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">fig, ax = plt.subplots()</span><br><span class="line">ax.scatter(y, predicted)</span><br><span class="line">ax.plot([y.min(), y.max()], [y.min(), y.max()], &apos;k--&apos;, lw=4)</span><br><span class="line">ax.set_xlabel(&apos;Measured&apos;)</span><br><span class="line">ax.set_ylabel(&apos;Predicted&apos;)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure></p>
+<p><img src="../../img/线性回归6.png" alt=""></p>
+<h3 id="10-完整代码"><a href="#10-完整代码" class="headerlink" title="10.完整代码"></a>10.完整代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br></pre></td><td class="code"><pre><span class="line">#-*- coding: utf-8 -*-</span><br><span class="line"></span><br><span class="line">import matplotlib.pyplot as plt</span><br><span class="line">#%matplotlib inline     #  ipython专属</span><br><span class="line">import numpy as np</span><br><span class="line">import pandas as pd</span><br><span class="line">from sklearn import datasets, linear_model</span><br><span class="line">from sklearn.model_selection import  train_test_split   #划分训练集和测试集</span><br><span class="line">from sklearn.linear_model import LinearRegression   #  运行scikit-learn的线性模型</span><br><span class="line">from sklearn import metrics</span><br><span class="line"># read_csv里面的参数是csv在你电脑上的路径，此处csv文件放在目录下面的data目录里</span><br><span class="line">data = pd.read_csv(&apos;./data/ccpp.csv&apos;)</span><br><span class="line"></span><br><span class="line">#读取前五行数据，如果是最后五行，用data.tail()</span><br><span class="line">print(data.head())</span><br><span class="line">#准备样本特征X，我们用AT， V，AP和RH这4个列作为样本特征。</span><br><span class="line">data.shape</span><br><span class="line">X = data[[&apos;AT&apos;, &apos;V&apos;, &apos;AP&apos;, &apos;RH&apos;]]</span><br><span class="line">print(X.head()) #  可以看到X的前五条输出</span><br><span class="line">#接着我们准备样本输出y， 我们用PE作为样本输出</span><br><span class="line">y = data[[&apos;PE&apos;]]</span><br><span class="line">print(y.head()) #  可以看到y的前五条输出</span><br><span class="line">#  我们把X和y的样本组合划分成两部分，一部分是训练集，一部分是测试集</span><br><span class="line">X_train, X_test, y_train, y_test = train_test_split(X, y, random_state=1)</span><br><span class="line"></span><br><span class="line">#  查看下训练集和测试集的维度</span><br><span class="line">#  可以看到75%的样本数据被作为训练集，25%的样本被作为测试集</span><br><span class="line">print(X_train.shape)</span><br><span class="line">print(y_train.shape)</span><br><span class="line">print(X_test.shape)</span><br><span class="line">print(y_test.shape)</span><br><span class="line"></span><br><span class="line">#  scikit-learn的线性回归算法使用的是最小二乘法来实现的</span><br><span class="line">linreg = LinearRegression()</span><br><span class="line">linreg.fit(X_train, y_train)</span><br><span class="line"></span><br><span class="line">#  拟合完毕后，我们看看我们的需要的模型系数结果</span><br><span class="line">#  这样我们就得到了在步骤1里面需要求得的5个值。也就是说PE和其他4个变量的关系如下：</span><br><span class="line">#  PE=447.06297099−1.97376045∗AT−0.23229086∗V+0.0693515∗AP−0.15806957∗RH</span><br><span class="line">print(linreg.intercept_)</span><br><span class="line">print(linreg.coef_)</span><br><span class="line"></span><br><span class="line">#  模型评价</span><br><span class="line">#  我们需要评估我们的模型的好坏程度，对于线性回归来说，我们一般用均方差或者均方根差在测试集上的表现来评价模型的好坏</span><br><span class="line">#  看看我们的模型的MSE和RMSE</span><br><span class="line">#  模型拟合测试集</span><br><span class="line">y_pred = linreg.predict(X_test)</span><br><span class="line"># 用scikit-learn计算MSE</span><br><span class="line">print(&quot;MSE:&quot;,metrics.mean_squared_error(y_test, y_pred))    #  MSE是均方误差</span><br><span class="line"># 用scikit-learn计算RMSE</span><br><span class="line">print(&quot;RMSE:&quot;,np.sqrt(metrics.mean_squared_error(y_test, y_pred)))  #  RMSE是均方根误差</span><br><span class="line">&apos;&apos;&apos;</span><br><span class="line">#  得到了MSE或者RMSE，如果我们用其他方法得到了不同的系数，需要选择模型时，就用MSE小的时候对应的参数。</span><br><span class="line">#  比如这次我们用AT， V，AP这3个列作为样本特征。不要RH， 输出仍然是PE。</span><br><span class="line">X = data[[&apos;AT&apos;, &apos;V&apos;, &apos;AP&apos;]]</span><br><span class="line">y = data[[&apos;PE&apos;]]</span><br><span class="line">X_train, X_test, y_train, y_test = train_test_split(X, y, random_state=1)</span><br><span class="line">linreg = LinearRegression()</span><br><span class="line">linreg.fit(X_train, y_train)</span><br><span class="line">#模型拟合测试集</span><br><span class="line">y_pred = linreg.predict(X_test)</span><br><span class="line">from sklearn import metrics</span><br><span class="line"># 用scikit-learn计算MSE</span><br><span class="line">print(&quot;MSE:&quot;,metrics.mean_squared_error(y_test, y_pred))</span><br><span class="line"># 用scikit-learn计算RMSE</span><br><span class="line">print(&quot;RMSE:&quot;,np.sqrt(metrics.mean_squared_error(y_test, y_pred)))</span><br><span class="line">#  可以看出，去掉RH后，模型拟合的没有加上RH的好，MSE变大了。</span><br><span class="line">&apos;&apos;&apos;</span><br><span class="line"></span><br><span class="line">#  交叉验证</span><br><span class="line">#  我们可以通过交叉验证来持续优化模型，代码如下，我们采用10折交叉验证，即cross_val_predict中的cv参数为10：</span><br><span class="line">X = data[[&apos;AT&apos;, &apos;V&apos;, &apos;AP&apos;, &apos;RH&apos;]]</span><br><span class="line">y = data[[&apos;PE&apos;]]</span><br><span class="line">from sklearn.model_selection import cross_val_predict</span><br><span class="line">predicted = cross_val_predict(linreg, X, y, cv=10)</span><br><span class="line"># 用scikit-learn计算MSE</span><br><span class="line">print(&quot;MSE:&quot;,metrics.mean_squared_error(y, predicted))</span><br><span class="line"># 用scikit-learn计算RMSE</span><br><span class="line">print(&quot;RMSE:&quot;,np.sqrt(metrics.mean_squared_error(y, predicted)))</span><br><span class="line">#可以看出，采用交叉验证模型的MSE比第一次的大，主要原因是我们这里是对所有折的样本做测试集对应的预测值的MSE，而第一次仅仅对25%的测试集做了MSE。两者的先决条件并不同。</span><br><span class="line"></span><br><span class="line">#  这里画图真实值和预测值的变化关系，离中间的直线y=x直接越近的点代表预测损失越低。</span><br><span class="line">fig, ax = plt.subplots()</span><br><span class="line">ax.scatter(y, predicted)</span><br><span class="line">ax.plot([y.min(), y.max()], [y.min(), y.max()], &apos;k--&apos;, lw=4)</span><br><span class="line">ax.set_xlabel(&apos;Measured&apos;)</span><br><span class="line">ax.set_ylabel(&apos;Predicted&apos;)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/机器学习/" rel="tag"># 机器学习</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/11/03/交叉验证/" rel="next" title="交叉验证">
+                <i class="fa fa-chevron-left"></i> 交叉验证
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/uploads/avatar.jpg"
+                alt="高航" />
+            
+              <p class="site-author-name" itemprop="name">高航</p>
+              <p class="site-description motion-element" itemprop="description">开心就好</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archive">
+              
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">分类</span>
+                
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">标签</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/HansGaoyeah" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-globe"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:gaohangcs@whu.edu.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-globe"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-globe"></i>
+                友情链接
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://qinjiangbo.com/" title="秦江波" target="_blank">秦江波</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://hegongshan.com/" title="贺巩山" target="_blank">贺巩山</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="www.hutianwei.park.bitcron.com" title="胡添维" target="_blank">胡添维</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://desire-zone.github.io" title="王志文" target="_blank">王志文</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#用scikit-learn和pandas学习线性回归"><span class="nav-number">1.</span> <span class="nav-text">用scikit-learn和pandas学习线性回归</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-获取数据，定义问题"><span class="nav-number">1.1.</span> <span class="nav-text">1.获取数据，定义问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-整理数据"><span class="nav-number">1.2.</span> <span class="nav-text">2.整理数据</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-用pandas来读取数据"><span class="nav-number">1.3.</span> <span class="nav-text">3.用pandas来读取数据</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-准备运行算法的数据"><span class="nav-number">1.4.</span> <span class="nav-text">4.准备运行算法的数据</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-划分训练集和测试集"><span class="nav-number">1.5.</span> <span class="nav-text">5.划分训练集和测试集</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-运行scikit-learn的线性模型"><span class="nav-number">1.6.</span> <span class="nav-text">6.运行scikit-learn的线性模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-模型评价"><span class="nav-number">1.7.</span> <span class="nav-text">7.模型评价</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-交叉验证"><span class="nav-number">1.8.</span> <span class="nav-text">8.交叉验证</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9-画图观察结果"><span class="nav-number">1.9.</span> <span class="nav-text">9.画图观察结果</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#10-完整代码"><span class="nav-number">1.10.</span> <span class="nav-text">10.完整代码</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">true</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user">访客数</i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye">阅读数</i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
